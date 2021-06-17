@@ -1,5 +1,5 @@
 # Rest-Api-s
-For Setup the Project follow these changes------
+For Setup the Project follow these Steps------
 
 1 => setup the npm in your vs-code editor
 2 => run the command {  npm i }
