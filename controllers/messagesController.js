@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { Message } from "../models";
-import CustomErrorHandler from '../services/CustomErrorHandler';
+import CustomErrorHandler from '../Services/CustomerrorHandler';
 
 
 const messagesController ={

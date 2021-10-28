@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { APP_URL } from '../config';
+import { WEB_URL } from '../config';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -9,8 +9,8 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, default: 'customer' },
-    image: { type: String, required: true , get: (image) =>{
-        return `${APP_URL}/${image}`;
+    image: { type: String, get: (image) =>{
+        return `${WEB_URL}/${image}`;
     }}
 
 }, { timestamps: true , toJSON: {getters: true} , id: false });

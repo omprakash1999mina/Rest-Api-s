@@ -1,7 +1,7 @@
 import { Product } from '../models';
 import multer from 'multer';
 import path from 'path';
-import CustomErrorHandler from '../services/CustomErrorHandler';
+import CustomErrorHandler from '../Services/CustomerrorHandler';
 import fs from 'fs';
 import productSchema from '../validators/productValidation';
 
@@ -63,18 +63,19 @@ const productController = {
             
             // const id = await Product.findOne({_id: req.params.id});
             // console.log(id);
-              if(id){
+            if(id){
                 return next(new Error("No such data exist Please recheck your id again !!!  "))
             }
             if (err) {
                 return next(CustomErrorHandler.serverError(err.message))
             }
-            if(req.file){
-                const filePath = req.file.path;
-
-            }
             // validation
             const { error } = productSchema.validate(req.body);
+            let filePath;
+            
+            if(req.file){
+                filePath = req.file.path;
+            }
             if(req.file){
 
                 if (error) {
@@ -123,7 +124,18 @@ const productController = {
             return res.json("Resquested data successfully deleted  !!!" );
         });
     },
-
+    async getProducts(req, res, next) {
+        let documents;
+        try {
+            documents = await Product.find({
+                _id: { $in: req.body.ids },
+            }).select('-updatedAt -__v');
+        } catch (err) {
+            return next(CustomErrorHandler.serverError());
+        }
+        return res.json(documents);
+    },
+    
     async getProductslist(req, res, next) {
 
         //  use pagination here for big data library is mongoose pagination
