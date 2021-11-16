@@ -2,9 +2,23 @@
 This repository give you a bit introduction about REST-API'S 
 ## Available Scripts
 In the project directory, you can run:
+### For Setup the Project follow these Steps
+```python
+# Run the command for geting the all nodemodules    
+npm install
+```
+```python
+# Setup the MongoDb server in your system and env file for confidential details .
+```
+```python
+# Now run the server 
+npm run dev or yarn dev
+```
 
-### `yarn start or npm start`
 
+
+# returns 'phenomenon'
+foobar.singularize('phenomena')
 Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:3000) to view it in the browser.
 
