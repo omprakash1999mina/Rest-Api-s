@@ -1,5 +1,5 @@
-import express from "express";
 const router = express.Router();
+import express from "express";
 import auth from "../middleware/auth";
 import admin from "../middleware/admin";
 
@@ -27,7 +27,7 @@ router.post('/products/cart-items', productController.getProducts);
  
 router.post('/user',loginController.logout);
  
-router.get('/', (req,res)=>{
+router.get('/',(req,res)=>{
     res.render('index');
 });
 router.get('/noaccess', (req,res)=>{

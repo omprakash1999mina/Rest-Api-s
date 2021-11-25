@@ -2,25 +2,16 @@
 import express from 'express';
 import { APP_PORT, DB_URL }  from './config';
 import errorHandler from './middleware/errorHandler';
+const PORT = process.env.PORT || APP_PORT;
 const app= express();
 import routes from './routes';
 import mongoose from 'mongoose';
 import path from "path";
 import cors from "cors";
 
-const handler = require('serve-handler');
-var fs = require('fs');
-var https = require('https');
-var http = require('http');
-var url = require('url');
 
 global.appRoot = path.resolve(__dirname);
 
-app.use(function(req, res, next){
-  res.header('Access-Control-Allow-Origin',"*"); // or specify your domain name
-  res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 // app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -35,9 +26,9 @@ try{
   mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
   const db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('DB connected...');
-});
+  db.once('open', () => {
+    console.log('DB connected...');
+  });
 }catch(err){
   console.log('DB connection faild');
 }
@@ -50,7 +41,6 @@ app.use(express.urlencoded({ extended: false}));
 
 // app.post()
 app.use('/api', routes);
-
 app.use('/uploads', express.static('uploads'));
 
 app.use(errorHandler);
@@ -62,4 +52,9 @@ app.get('/',(req,res)=>{
   res.render('index')
 })
 
-app.listen(APP_PORT,() => console.log(`Listening on port ${APP_PORT}. `));
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*',(req, res)=>{
+  res.render('NotFound')
+})
+
+app.listen(APP_PORT,() => console.log(`Listening on port ${PORT}. `));
