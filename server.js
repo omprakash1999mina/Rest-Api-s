@@ -2,7 +2,7 @@
 import express from 'express';
 import { APP_PORT, DB_URL }  from './config';
 import errorHandler from './middleware/errorHandler';
-const PORT = process.env.PORT || APP_PORT;
+const PORT = process.env.PORT || 3000;
 const app= express();
 import routes from './routes';
 import mongoose from 'mongoose';
