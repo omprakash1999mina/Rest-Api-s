@@ -57,4 +57,4 @@ app.get('*',(req, res)=>{
   res.render('NotFound')
 })
 
-app.listen(APP_PORT,() => console.log(`Listening on port ${PORT}. `));
+app.listen(PORT,() => console.log(`Listening on port ${PORT}. `));
