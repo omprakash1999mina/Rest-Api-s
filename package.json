@@ -1,8 +1,8 @@
 {
-  "name": "Exptut",
-  "version": "1.0.0",
-  "description": "good",
-  "main": "app.js",
+  "name": "rest-api",
+  "version": "3.1.0",
+  "description": "Rest Apis project developed by Om Prakash Bairwa [Royal_IITian] ",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r esm server.js",
