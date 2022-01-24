@@ -3,7 +3,7 @@ import express from "express";
 import auth from "../middleware/auth";
 import admin from "../middleware/admin";
 import {orderController, messagesController, registerController, loginController , userController, refreshController, productController} from '../controllers';
- 
+
 router.post('/register',registerController.register);
 router.post('/login',loginController.login);
 router.post('/message',messagesController.message);
