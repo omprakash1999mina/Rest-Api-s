@@ -5,12 +5,14 @@ import CustomErrorHandler from '../Services/CustomerrorHandler';
 
 const orderController = {
     async store(req,res, next){
+        // console.log(req.body);
         // console.log(req.user);
         const orderSchema = Joi.object({
             // customerId: Joi.string().required(),
             name : Joi.string().required(),
-            items: Joi.string().required(),
+            items: Joi.object().required(),
             phone: Joi.string().required(),
+            totalgrand: Joi.number().required(),
             address: Joi.string().required(),
             paymentType: Joi.string(),
             status: Joi.string()
@@ -22,13 +24,12 @@ const orderController = {
             // rootfolder/uploads/filename.png
         }
         try{
-            const {name, items,  phone, address, paymentType, status} = req.body;
+            const {name, items,  phone, address, paymentType, status, totalgrand,} = req.body;
             const {_id } = req.user;
             const exist = await User.exists({_id: _id});
 
             if(exist){
                 let document;
-            
                 try {
                         document = await Order.create({
                         // name: name,
@@ -36,6 +37,7 @@ const orderController = {
                         name,
                         items,
                         phone,
+                        totalgrand,
                         address,
                         paymentType,
                         status,
