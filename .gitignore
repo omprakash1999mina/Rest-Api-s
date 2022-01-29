@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+ 
 # production
 /uploads
 /build
@@ -15,6 +15,7 @@
 # misc
 .DS_Store
 .env.local
+.env.example
 .env
 .env.development.local
 .env.test.local
