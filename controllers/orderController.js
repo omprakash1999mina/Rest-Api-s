@@ -5,10 +5,8 @@ import CustomErrorHandler from '../Services/CustomerrorHandler';
 
 const orderController = {
     async store(req,res, next){
-        // console.log(req.body);
         // console.log(req.user);
         const orderSchema = Joi.object({
-            // customerId: Joi.string().required(),
             name : Joi.string().required(),
             items: Joi.object().required(),
             phone: Joi.string().required(),
