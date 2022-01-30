@@ -52,7 +52,6 @@ const orderController = {
                 return  next( CustomErrorHandler.alreadyExist('User not loged in. '));
                 // return next( err );
         }
-    
 
     },
     async destroy(req, res, next) {
