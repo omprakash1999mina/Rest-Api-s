@@ -71,7 +71,7 @@ const registerController = {
 
 
             // const { name, price, size } = req.body;
-            const {name, email, password, age, gender, image} = req.body;
+            const {name, email, password, age, gender} = req.body;
             const hashedPassword = await bcrypt.hash(password, 10);
 
             let document;
@@ -83,8 +83,6 @@ const registerController = {
                 document = await User.create({
                 // name: name,
                 name,
-
-                // email: email,
                 email,
                 age,
                 gender,
@@ -99,11 +97,8 @@ const registerController = {
             } catch(err) {
                 return next(err);
             }
-
-        
-
             // res.redirect('/user');
-            res.status(201).json({msg: "User Registered Successfully !!!  ", access_token: access_token ,refresh_token: refresh_token});
+            res.status(201).json({ _id: document._id, msg: "User Registered Successfully !!!  ", access_token: access_token ,refresh_token: refresh_token});
 
             // res.json(document);
         });

@@ -24,7 +24,7 @@ router.get('/users/:id',[ auth ], userController.getUsersOne);
 router.get('/messages',[auth , admin], messagesController.getmessages);
 router.get('/orders/:id',[auth ], orderController.getorders);
 // router.get('/user/:id', productController.getProductsOne);
-router.post('/products/cart-items',[auth], productController.getProducts);
+router.post('/products/cart-items',productController.getProducts);
 router.post('/user',loginController.logout);
  
 router.get('/',(req,res)=>{
